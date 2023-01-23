@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title salon.name %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div data-slider>
+                    {% if salon.pictures is empty %}
+                        <img src="{{ '/images/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                    {% else %}
+                        {% for picture in salon.pictures %}
+                            <img src="{{ vich_uploader_asset(picture, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1>{{ salon.name }}</h1>
+                <h2>{{ salon.city }} - {{ salon.postalCode }}</h2>
+                <div class="text-primary" style="font-size: 4rem; font-weight: bold;"></div>
+                <a href="{{ path('appointment.new', {id: salon.id}) }}" class="btn btn-primary">Prendre un rendez-vous</a>
+                {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <p>
+        {{ salon.description | nl2br }}
+    </p>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Informations</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td>Adresse</td>
+                    <td>{{ salon.address }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ salon.email }}</td>
+                </tr>
+                    <td>Téléphone</td>
+                    <td>{{ salon.phone }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h2>Style(s) de tatouage</h2>
+            <ul class="list-group">
+                {% for style in salon.tatoostyle %}
+                    <li class="list-group-item">{{ style.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div id="map" style="width: 100%; height: 400px" data-lat="{{ salon.lat }}" data-lng="{{ salon.lng }}"></div>
+</div>
+{% endblock %}

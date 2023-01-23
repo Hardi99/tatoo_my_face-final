@@ -1,0 +1,30 @@
+logout:
+    path: /logout
+
+appointment.new:
+    path: /appointments/{id}
+    controller: App\Controller\AppointmentController::new
+    
+appointment.success:
+    path: /appointments/{id}/success
+    controller: App\Controller\AppointmentController::success
+
+appointment.get-events:
+    path: /appointments/get-events/{id}
+    controller: App\Controller\AppointmentController::getEvents
+
+error:
+    path: /error
+    controller: App\Controller\ErrorController::handleError
+
+error_404:
+    path: /404
+    controller: App\Controller\ErrorController::error404
+
+error_403:
+    path: /403
+    controller: App\Controller\ErrorController::error403
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+

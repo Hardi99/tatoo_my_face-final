@@ -1,0 +1,17 @@
+<div class="card mb-4">
+  {% if salon.picture %}
+    <img src="{{ vich_uploader_asset(salon.picture, 'imageFile') | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height:auto;">
+    {% else %}
+      <img src="{{ '/images/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height:auto;">
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">
+      <a href="{{ path('salon.show', {slug: salon.slug, id: salon.id}) }}">
+        {{ salon.name }}
+      </a>
+    </h5>
+    <p class="card-text">{{ salon.city }} ({{ salon.postalCode }})</p>
+    <div class="text-primary" style="font-size:2rem; font-weight: bold;">
+    </div>
+  </div>
+</div>

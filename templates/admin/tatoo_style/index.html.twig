@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gérer les styles' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Gérer les styles</h1>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for style in tatoo_style %}
+            <tr>
+                <td>{{ style.name }}</td>
+                <td><a href="{{ path('admin.tatoo_style.edit', {id: style.id}) }}" class="btn btn-secondary">Editer</a>
+                    <form method="POST" action="{{ path('admin.tatoo_style.delete', {id: style.id}) }}"
+                        style="display: inline-block;" onsubmit="return confirm('Êtes-vous vraiment sûr?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ style.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="text-right">
+        <a href="{{ path('admin.tatoo_style.new') }}" class="btn btn-primary">Créer un nouveau style</a>
+    </div>
+
+</div>
+
+{% endblock %}

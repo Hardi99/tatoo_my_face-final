@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de rendez-vous{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Rendez-vous pris avec succès !</h1>
+        <p>Votre rendez-vous pour chez {{ salon.name }} a été enregistré avec succès.</p>
+        {# <p>Nous vous attendons le {{ appointment.appointmentAt|date('d/m/Y H:i') }}. </p> #}
+        <p>Un lien vous a été envoyé par mail si vous souhaitez annuler votre rendez-vous</p>
+        <a href="{{ path('home') }}" class="btn btn-primary">Retour à l'accueil</a>
+    </div>
+{% endblock %}

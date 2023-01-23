@@ -1,0 +1,7 @@
+error_404:
+    path: /404
+    controller: App\Controller\ExceptionController::notFound
+
+error_403:
+    path: /403
+    controller: App\Controller\ExceptionController::accessDenied

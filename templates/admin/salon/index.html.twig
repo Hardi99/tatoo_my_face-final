@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gérer les salons' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Gérer les salons</h1>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for salon in salons %}
+            <tr>
+                <td>{{ salon.name }}</td>
+                <td>
+                    <a href="{{ path('admin.salon.list', {id: salon.id}) }}" class="btn btn-info">Index RDV</a>
+                    <a href="{{ path('admin.salon.calendar', {id: salon.id}) }}" class="btn btn-warning">Calendrier</a>
+                    <a href="{{ path('admin.salon.edit', {id: salon.id}) }}" class="btn btn-secondary">Editer</a>
+                    <form method="POST" action="{{ path('admin.salon.delete', {id: salon.id}) }}"
+                        style="display: inline-block;" onsubmit="return confirm('Êtes-vous vraiment sûr?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ salon.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <a href="{{ path('admin.salon.new') }}" class="btn btn-primary">Créer un nouveau salon</a>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

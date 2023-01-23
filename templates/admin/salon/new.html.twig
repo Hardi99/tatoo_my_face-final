@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Créer un nouveau salon' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Créer un nouveau salon</h1>
+    {{ include ("admin/salon/_form.html.twig", { button: 'Créer' }) }}
+</div>
+{% endblock %}

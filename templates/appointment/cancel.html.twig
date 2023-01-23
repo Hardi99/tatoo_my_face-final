@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression de rendez-vous{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Rendez-vous supprimé avec succès !</h1>
+        <p>Votre rendez-vous pour a été supprimé avec succès.</p>
+        {# <p>Nous vous attendons le {{ appointment.appointmentAt|date('d/m/Y H:i') }}. </p> #}
+        <p>Si vous souhaitez prendre un nouveau rendez-vous dans un autre salon, rendez vous à nouveau sur notre site</p>
+        <a href="{{ path('home') }}" class="btn btn-primary">Retour à l'accueil</a>
+    </div>
+{% endblock %}

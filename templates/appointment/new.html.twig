@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prendre un rendez-vous{% endblock %}
+
+{% block body %}
+    {% set salonId = salon.id %}
+    <div class="container mt-4">
+        <h1>Prendre rendez-vous chez {{ salon.name }}</h1>
+        <p>Choisissez une date et une heure pour votre rendez-vous.</p>
+        <div id="calendar" data-salon-id="{{ salon.id }}"></div>
+        {{ include ("appointment/form.html.twig", { button: 'Créer', id: salon.id }) }}
+{#         <p> Vous pouvez consulter les prestations disponibles pour ce salon :</p>
+        <ul>
+            {% for style in styles %}
+                <li>{{ style.name }}</li>
+            {% endfor %}
+        </ul> #}
+        {% for appointment in appointments %}
+            <div>{{ appointment.title }}</div>
+            <div>{{ appointment.start }}</div>
+            <div>{{ appointment.end }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}

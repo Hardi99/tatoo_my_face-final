@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Administration' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Administration</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Lien</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CRUD des salons</td>
+                <td>
+                    <a href="{{ path('admin.salon.index') }}" class="btn btn-primary">Visiter</a>
+                </td>
+            </tr>
+            <tr>
+                <td>CRUD des styles de tatouage</td>
+                <td>
+                    <a href="{{ path('admin.tatoo_style.index') }}" class="btn btn-primary">Visiter</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+{% endblock %}

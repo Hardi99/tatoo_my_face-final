@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Calendrier' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Calendrier de {{ salon.name }}</h1>
+        <div id="calendar" data-salon-id="{{ salon.id }}"></div>
+    </div>
+
+{% endblock %}

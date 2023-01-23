@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Annulation' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Informations de rendez-vous</h1>
+        <p>Prénom: {{ appointment.firstname }}</p>
+        <p>Nom de famille: {{ appointment.lastname }}</p>
+        <p>Email: {{ appointment.email }}</p>
+        <p>Salon: {{ appointment.salon }}</p>
+        <p>Date de rendez-vous: {{ appointment.appointmentAt|date('Y-m-d') }}</p>
+        <p>Heure de début: {{ appointment.start|date('H-i') }}</p>
+        <p>Heure de fin: {{ appointment.end|date('H-i') }}</p>
+        {# Create the form for deleting the appointment #}
+        <form method="post" action="{{ path('appointment.delete', {'token': appointment.token}) }}">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="btn btn-danger">Supprimer rendez-vous</button>
+        </form>
+    </div>
+{% endblock %}

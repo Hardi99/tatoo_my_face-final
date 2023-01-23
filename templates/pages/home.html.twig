@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Tatoo my face' %}
+
+{% block body %}
+    <video autoplay loop muted>
+        <source src="{{ asset('videos/tatoo_cover.mp4') }}" type="video/mp4">
+        <source src="./assets/videos/tatoo_cover.webm" type="video/webm">
+    </video>
+    <div class="overlay"></div>
+    <div class="text">
+        <h1>TATOO MY FACE</h1>
+        <p>Nous sommes sun collectif de tatoueurs passionés qui veulent se faire connaître.</p>
+        <p>Bienvenue sur notre site !</p>
+    </div>
+
+{% endblock %}
